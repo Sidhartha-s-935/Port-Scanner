@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Scanner</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold mb-4">Port Scanner</h1>
+        <form action="/scan" method="post" id="scan-form">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="targets">Target Host IPs/Domains (comma-separated):</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="targets" name="targets" type="text" placeholder="Example: 192.168.1.1, example.com">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="domain">Common Domain Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="domain" name="domain" type="text" placeholder="Example: mydomain.com">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="portRange">Port Range (e.g., 1-100):</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="portRange" name="portRange" type="text" placeholder="Example: 1-100">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Select a Scan Type:</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" class="form-radio" name="scanType" value="-sS">
+                        <span class="ml-2">TCP SYN</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="scanType" value="-sT">
+                        <span class="ml-2">TCP Connect</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="scanType" value="-sU">
+                        <span class="ml-2">UDP</span>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Scan Ports</button>
+        </form>
+        
+        <div class="mt-6" id="results-container">
+            <h2 class="text-lg font-semibold mb-2">Scan Results:</h2>
+            <pre id="scan-results"></pre> <!-- Display scan results here -->
+        </div>
+    </div>
+    <script src="static/scan.js"></script> <!-- Include your JavaScript file -->
+</body>
+</html>
